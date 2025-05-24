@@ -1,0 +1,163 @@
+/* Custom CSS for 2048 game */
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #faf8ef;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.game-container {
+    background-color: #bbada0;
+    border-radius: 8px;
+    padding: 10px;
+    position: relative;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+    max-width: 500px; /* Limit max width for larger screens */
+    width: 100%; /* Make it fluid */
+}
+
+.game-board {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    gap: 10px;
+    padding: 10px;
+    background-color: #bbada0;
+    border-radius: 6px;
+}
+
+.grid-cell {
+    width: 100%;
+    padding-bottom: 100%; /* Creates a square cell */
+    background-color: rgba(238, 228, 218, 0.35);
+    border-radius: 3px;
+    position: relative;
+}
+
+.tile {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2.5rem;
+    font-weight: bold;
+    border-radius: 3px;
+    transition: transform 0.1s ease-in-out, background-color 0.1s ease-in-out, color 0.1s ease-in-out;
+    color: #776e65;
+    box-sizing: border-box; /* Include padding/border in element's total width/height */
+}
+
+/* Tile colors */
+.tile-2 { background-color: #eee4da; color: #776e65; font-size: 2.5rem; }
+.tile-4 { background-color: #ede0c8; color: #776e65; font-size: 2.5rem; }
+.tile-8 { background-color: #f2b179; color: #f9f6f2; font-size: 2.5rem; }
+.tile-16 { background-color: #f59563; color: #f9f6f2; font-size: 2.5rem; }
+.tile-32 { background-color: #f67c5f; color: #f9f6f2; font-size: 2.5rem; }
+.tile-64 { background-color: #f65e3b; color: #f9f6f2; font-size: 2.5rem; }
+.tile-128 { background-color: #edcf72; color: #f9f6f2; font-size: 2rem; }
+.tile-256 { background-color: #edcc61; color: #f9f6f2; font-size: 2rem; }
+.tile-512 { background-color: #edc850; color: #f9f6f2; font-size: 2rem; }
+.tile-1024 { background-color: #edc53f; color: #f9f6f2; font-size: 1.5rem; }
+.tile-2048 { background-color: #edc22e; color: #f9f6f2; font-size: 1.5rem; }
+/* Larger tiles might need smaller font sizes */
+.tile-4096, .tile-8192, .tile-16384 { background-color: #3c3a32; color: #f9f6f2; font-size: 1.2rem; }
+
+/* Animation for new tiles */
+@keyframes appear {
+    0% { transform: scale(0); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+}
+.tile-new {
+    animation: appear 0.2s ease-in-out;
+}
+
+/* Animation for merged tiles */
+@keyframes pop {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+.tile-merged {
+    animation: pop 0.2s ease-in-out;
+}
+
+.game-message {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255, 255, 255, 0.7);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    font-size: 3rem;
+    font-weight: bold;
+    color: #776e65;
+    z-index: 10;
+    display: none; /* Hidden by default */
+}
+
+.game-message.active {
+    display: flex;
+}
+
+.message-button {
+    background-color: #8f7a66;
+    color: #f9f6f2;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: background-color 0.2s ease;
+}
+
+.message-button:hover {
+    background-color: #9f8a76;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+    .tile {
+        font-size: 1.8rem;
+    }
+    .tile-128, .tile-256, .tile-512 { font-size: 1.5rem; }
+    .tile-1024, .tile-2048 { font-size: 1.2rem; }
+    .tile-4096, .tile-8192, .tile-16384 { font-size: 1rem; }
+    .game-message {
+        font-size: 2rem;
+    }
+    .message-button {
+        font-size: 1rem;
+        padding: 8px 15px;
+    }
+}
+
+@media (max-width: 400px) {
+    .tile {
+        font-size: 1.5rem;
+    }
+    .tile-128, .tile-256, .tile-512 { font-size: 1.2rem; }
+    .tile-1024, .tile-2048 { font-size: 1rem; }
+    .tile-4096, .tile-8192, .tile-16384 { font-size: 0.8rem; }
+    .game-message {
+        font-size: 1.5rem;
+    }
+    .message-button {
+        font-size: 0.9rem;
+        padding: 7px 12px;
+    }
+}
