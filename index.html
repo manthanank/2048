@@ -8,13 +8,50 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
-<body class="bg-gray-100 flex flex-col items-center justify-center min-h-screen p-4">
+<body class="flex flex-col items-center justify-center min-h-screen p-4">
 
-    <div class="flex justify-between items-center w-full max-w-lg mb-4">
-        <h1 class="text-4xl font-bold text-gray-800">2048</h1>
-        <div class="bg-gray-700 text-white px-4 py-2 rounded-lg shadow-md">
-            Score: <span id="score" class="font-bold">0</span>
+    <div class="flex flex-col sm:flex-row justify-between items-center w-full max-w-lg mb-4 gap-2">
+        <h1 class="text-4xl font-bold game-title">2048</h1>
+        <div class="flex flex-col sm:flex-row gap-2 items-center">
+            <div class="bg-gray-700 text-white px-4 py-2 rounded-lg shadow-md">
+                Score: <span id="score" class="font-bold">0</span>
+            </div>
+            <div class="bg-yellow-600 text-white px-4 py-2 rounded-lg shadow-md ml-0 sm:ml-2">
+                High Score: <span id="high-score" class="font-bold">0</span>
+            </div>
+            <button id="undo-button" class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded-lg shadow-md ml-0 sm:ml-2 transition duration-200">Undo</button>
+            <button id="redo-button" class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded-lg shadow-md ml-0 sm:ml-2 transition duration-200">Redo</button>
         </div>
+    </div>
+    <div id="challenge-status-container" class="w-full max-w-lg mb-2 text-center hidden">
+        <span id="challenge-status" class="text-xl font-bold"></span>
+    </div>
+    <div class="flex flex-wrap gap-2 w-full max-w-lg mb-4 justify-between items-center">
+        <div>
+            <label for="board-size" class="mr-2 font-semibold">Board Size:</label>
+            <select id="board-size" class="theme-select-input px-2 py-1 rounded border">
+                <option value="3">3x3</option>
+                <option value="4" selected>4x4</option>
+                <option value="5">5x5</option>
+            </select>
+        </div>
+        <div>
+            <label for="challenge-mode" class="mr-2 font-semibold">Challenge:</label>
+            <select id="challenge-mode" class="theme-select-input px-2 py-1 rounded border">
+                <option value="classic" selected>Classic</option>
+                <option value="timed">Timed</option>
+                <option value="limited-moves">Limited Moves</option>
+            </select>
+        </div>
+        <div>
+            <label for="theme-select" class="mr-2 font-semibold">Theme:</label>
+            <select id="theme-select" class="theme-select-input px-2 py-1 rounded border">
+                <option value="light" selected>Light</option>
+                <option value="dark">Dark</option>
+                <option value="neon">Neon</option>
+            </select>
+        </div>
+        <button id="leaderboard-button" class="bg-green-600 hover:bg-green-800 text-white font-bold py-2 px-4 rounded-lg shadow-md transition duration-200">Leaderboard</button>
     </div>
 
     <div class="game-container">
@@ -23,11 +60,23 @@
 
         <div id="game-message" class="game-message">
             <span id="message-text"></span>
-            <button id="new-game-button-message" class="message-button">New Game</button>
+            <div class="flex gap-2 mt-4 flex-wrap justify-center">
+                <button id="keep-playing-button" class="message-button hidden">Keep Playing</button>
+                <button id="share-button" class="message-button hidden">Share</button>
+                <button id="new-game-button-message" class="message-button !mt-0">New Game</button>
+            </div>
         </div>
     </div>    <button id="new-game-button" class="mt-8 bg-blue-500 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg shadow-lg transition duration-300 ease-in-out transform hover:scale-105">
         New Game
     </button>
+
+    <div id="leaderboard-modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+        <div class="bg-white rounded-lg shadow-lg p-6 w-full max-w-xs relative leaderboard-modal-content">
+            <button id="close-leaderboard" class="absolute top-2 right-2 text-2xl hover:opacity-75">&times;</button>
+            <h2 class="text-2xl font-bold mb-4 text-center leaderboard-title">Leaderboard</h2>
+            <ol id="leaderboard-list" class="list-decimal pl-5 space-y-2 text-lg"></ol>
+        </div>
+    </div>
 
     <script src="script.js"></script>
 </body>

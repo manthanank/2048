@@ -12,6 +12,47 @@ body {
     box-sizing: border-box;
 }
 
+body.dark-mode {
+    background-color: #18181b;
+    color: #f4f4f4;
+}
+body.dark-mode .game-container {
+    background-color: #23232a;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.5), 0 6px 6px rgba(0,0,0,0.7);
+}
+body.dark-mode .game-board {
+    background-color: #23232a;
+}
+body.dark-mode .grid-cell {
+    background-color: rgba(44, 44, 56, 0.5);
+}
+body.dark-mode .tile {
+    color: #f4f4f4;
+}
+body.dark-mode .tile-2 { background-color: #22223b; color: #f4f4f4; }
+body.dark-mode .tile-4 { background-color: #38385b; color: #f4f4f4; }
+body.dark-mode .tile-8 { background-color: #4b4b7e; color: #f4f4f4; }
+body.dark-mode .tile-16 { background-color: #5c5c9e; color: #f4f4f4; }
+body.dark-mode .tile-32 { background-color: #6d6dbf; color: #f4f4f4; }
+body.dark-mode .tile-64 { background-color: #7e7edf; color: #f4f4f4; }
+body.dark-mode .tile-128 { background-color: #a29bfe; color: #23232a; }
+body.dark-mode .tile-256 { background-color: #81ecec; color: #23232a; }
+body.dark-mode .tile-512 { background-color: #00b894; color: #23232a; }
+body.dark-mode .tile-1024 { background-color: #00cec9; color: #23232a; }
+body.dark-mode .tile-2048 { background-color: #fdcb6e; color: #23232a; }
+body.dark-mode .tile-4096, body.dark-mode .tile-8192, body.dark-mode .tile-16384 { background-color: #18181b; color: #fdcb6e; }
+body.dark-mode .game-message {
+    background-color: rgba(24, 24, 27, 0.85);
+    color: #fdcb6e;
+}
+body.dark-mode .message-button {
+    background-color: #23232a;
+    color: #fdcb6e;
+}
+body.dark-mode .message-button:hover {
+    background-color: #38385b;
+}
+
 .game-container {
     background-color: #bbada0;
     border-radius: 8px;
@@ -161,3 +202,42 @@ body {
         padding: 7px 12px;
     }
 }
+
+/* Neon Theme */
+body.theme-neon {
+    background-color: #050510;
+    color: #00ffcc;
+}
+body.theme-neon .game-container { background-color: #1a1a2e; box-shadow: 0 0 20px #00ffcc; }
+body.theme-neon .game-board { background-color: #1a1a2e; }
+body.theme-neon .grid-cell { background-color: #2a2a4e; border: 1px solid #00ffcc33; }
+body.theme-neon .tile { color: #fff; text-shadow: 0 0 5px #fff; }
+body.theme-neon .tile-2 { background-color: #000; box-shadow: inset 0 0 10px #ff00ff; border: 1px solid #ff00ff; }
+body.theme-neon .tile-4 { background-color: #000; box-shadow: inset 0 0 10px #00ffff; border: 1px solid #00ffff; }
+body.theme-neon .tile-8 { background-color: #000; box-shadow: inset 0 0 15px #00ff00; border: 1px solid #00ff00; }
+body.theme-neon .tile-16 { background-color: #000; box-shadow: inset 0 0 15px #ffff00; border: 1px solid #ffff00; }
+body.theme-neon .tile-32 { background-color: #000; box-shadow: inset 0 0 20px #ff8800; border: 1px solid #ff8800; }
+body.theme-neon .tile-64 { background-color: #000; box-shadow: inset 0 0 20px #ff0000; border: 1px solid #ff0000; }
+body.theme-neon .tile-128, body.theme-neon .tile-256, body.theme-neon .tile-512 { background-color: #000; box-shadow: inset 0 0 25px #ff00ff; border: 1px solid #ff00ff; }
+body.theme-neon .tile-1024, body.theme-neon .tile-2048 { background-color: #000; box-shadow: inset 0 0 30px #00ffff; border: 1px solid #00ffff; }
+body.theme-neon .game-message { background-color: rgba(5, 5, 16, 0.9); color: #00ffcc; }
+body.theme-neon .message-button { background-color: #1a1a2e; color: #00ffcc; border: 1px solid #00ffcc; }
+
+/* Dynamic UI Elements */
+.game-title, #challenge-status { color: #776e65; }
+body.dark-mode .game-title, body.dark-mode #challenge-status { color: #f4f4f4; }
+body.theme-neon .game-title, body.theme-neon #challenge-status { color: #00ffcc; text-shadow: 0 0 10px #00ffcc; }
+
+/* Select inputs */
+.theme-select-input { background-color: #fff; color: #333; border-color: #ccc; }
+body.dark-mode .theme-select-input { background-color: #38385b; color: #f4f4f4; border-color: #5c5c9e; }
+body.theme-neon .theme-select-input { background-color: #1a1a2e; color: #00ffcc; border-color: #00ffcc; box-shadow: 0 0 5px #00ffcc; outline: none; }
+
+/* Leaderboard Modal */
+.leaderboard-modal-content { background-color: #fff; color: #333; }
+body.dark-mode .leaderboard-modal-content { background-color: #18181b; color: #f4f4f4; border: 1px solid #38385b; }
+body.theme-neon .leaderboard-modal-content { background-color: #050510; color: #00ffcc; border: 1px solid #00ffcc; box-shadow: 0 0 20px #00ffcc; }
+
+.leaderboard-title { color: #333; }
+body.dark-mode .leaderboard-title { color: #fdcb6e; }
+body.theme-neon .leaderboard-title { color: #ff00ff; text-shadow: 0 0 10px #ff00ff; }

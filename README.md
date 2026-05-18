@@ -1,6 +1,6 @@
 # 2048 Game
 
-A modern, responsive implementation of the popular 2048 puzzle game built with HTML, CSS, and JavaScript.
+A modern, responsive, and highly-featured implementation of the popular 2048 puzzle game built with HTML, CSS, and JavaScript.
 
 ## 🎮 How to Play
 
@@ -11,20 +11,24 @@ A modern, responsive implementation of the popular 2048 puzzle game built with H
 
 ## 🚀 Features
 
-- **Responsive design** - Works on desktop, tablet, and mobile devices
-- **Touch controls** - Full swipe gesture support for mobile
-- **Smooth animations** - Tiles appear and merge with smooth transitions
-- **Modern UI** - Clean, beautiful interface using Tailwind CSS
-- **Game state management** - Win/lose detection and new game functionality
-- **Score tracking** - Keep track of your current score
+- **Time Travel** - Full Undo and Redo functionality to reverse your mistakes and explore alternate timelines!
+- **Challenge Modes** - Play Classic, Timed (race against the clock), or Limited Moves (strategize your path).
+- **Auto-Save & Resume** - Your game state, including undo history and challenge timers, is saved to your browser. Close the tab and resume exactly where you left off.
+- **Custom Themes** - Choose between Light, Dark, and a glowing Neon theme.
+- **Dynamic Board Sizes** - Play on 3x3, 4x4, or 5x5 grids for varying difficulty.
+- **Endless Mode** - Reached 2048? Hit "Keep Playing" to chase 4096, 8192, and beyond.
+- **Leaderboard** - Tracks and saves your top 5 high scores locally.
+- **Audio & Haptics** - Custom synthesizer sounds (Web Audio API) for slides, merges, and game over, plus mobile haptic feedback.
+- **Share Score** - Easily share your high scores with friends using native Web Share API.
+- **Responsive design** - Works seamlessly on desktop, tablet, and mobile devices.
 
 ## 📁 Project Structure
 
 ```tree
 2048/
-├── index.html      # Main HTML structure
-├── styles.css      # All styling and animations
-├── script.js       # Game logic and functionality
+├── index.html      # Main HTML structure and UI
+├── styles.css      # All styling, animations, and themes
+├── script.js       # Game logic, state management, and audio engine
 ├── README.md       # Project documentation
 └── LICENSE         # License file
 ```
@@ -34,23 +38,24 @@ A modern, responsive implementation of the popular 2048 puzzle game built with H
 ### Architecture
 
 - **Modular design** - Separated HTML, CSS, and JavaScript for better maintainability
-- **Clean code** - Well-documented functions with JSDoc comments
+- **State Management** - Complex state handling that persists across sessions via `localStorage`
+- **Native Audio** - Built-in procedural audio engine without any external audio files
 - **Mobile-first** - Touch events and responsive breakpoints
 
 ### Technologies Used
 
 - **HTML5** - Semantic markup and structure
-- **CSS3** - Grid layout, animations, and responsive design
-- **JavaScript (ES6+)** - Game logic, DOM manipulation, and event handling
-- **Tailwind CSS** - Utility-first CSS framework for styling
+- **CSS3** - Grid layout, animations, theme variables, and responsive design
+- **JavaScript (ES6+)** - Game logic, DOM manipulation, Web Audio API, Web Share API
+- **Tailwind CSS** - Utility-first CSS framework for layout
 - **Google Fonts** - Inter font family for typography
 
 ### Key Features Implementation
 
 - **Board rotation algorithm** - Simplifies movement logic for all directions
 - **Tile merging system** - Handles combining identical adjacent tiles
-- **Animation system** - CSS keyframes for smooth tile transitions
-- **Touch gesture detection** - Custom swipe detection for mobile devices
+- **Audio Synthesizer** - Uses `AudioContext` oscillators for rich, dynamic sounds
+- **State Serialization** - Deep copies game boards for the undo/redo stacks
 
 ## 🎯 Game Mechanics
 
@@ -67,11 +72,10 @@ The game uses a clever rotation technique where all movements are converted to "
 
 ## 🎨 Styling Features
 
-- **Tile color scheme** - Distinctive colors for each tile value
+- **Theme Engine** - Pure CSS overrides for instant theme switching (Light/Dark/Neon)
 - **Responsive typography** - Font sizes adapt to screen size
 - **Smooth animations** - Scale-in for new tiles, pop effect for merges
 - **Modern shadows** - Subtle box-shadows for depth
-- **Mobile optimization** - Touch-friendly button sizes
 
 ## 🚀 Getting Started
 
@@ -96,6 +100,8 @@ No build process or dependencies required - just open and play!
 - **← Arrow Key** - Move tiles left
 - **→ Arrow Key** - Move tiles right
 - **New Game Button** - Start a new game
+- **Undo Button** - Go back one move
+- **Redo Button** - Go forward one move
 
 ### Mobile/Touch
 
@@ -103,7 +109,7 @@ No build process or dependencies required - just open and play!
 - **Swipe Down** - Move tiles down
 - **Swipe Left** - Move tiles left
 - **Swipe Right** - Move tiles right
-- **Tap New Game** - Start a new game
+- **Tap Buttons** - UI is fully optimized for touch
 
 ## 🏆 Game Rules
 
@@ -111,8 +117,8 @@ No build process or dependencies required - just open and play!
 2. Use directional inputs to slide tiles
 3. When two tiles with the same number touch, they merge
 4. Each move adds a new random tile (90% chance of 2, 10% chance of 4)
-5. Win by creating a 2048 tile
-6. Lose when no moves are possible
+5. Win by creating a 2048 tile (or keep playing to reach higher numbers)
+6. Lose when no moves are possible (or time/moves run out in challenge modes)
 
 ## 📈 Scoring
 
